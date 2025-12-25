@@ -63,3 +63,4 @@ A production-ready, multi-module Car Rental Platform designed for seamless user 
 
 **Car Rental Platform (React Native, Node.js, MongoDB)**
 Architected and developed a full-stack car rental ecosystem featuring a high-fidelity mobile app with 60fps animations (Reanimated) and a Next.js admin dashboard. Implemented secure JWT auth, real-time booking management, and a scalable REST API on Node.js/Express handling complex vehicle availability logic.
+# Luxe-cars-rental
