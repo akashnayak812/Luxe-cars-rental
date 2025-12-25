@@ -11,18 +11,22 @@ router.get('/me', auth, async (req, res) => {
     try {
         const user = await User.findById(req.user._id).select('-password');
         
-        // Get user's bookings with car details
+        // Get user's bookings with car details (including cash_on_return bookings)
         const bookings = await Booking.find({ user: req.user._id })
             .populate('car', 'name model images pricePerDay brand')
             .populate('driver', 'name phone rating')
-            .sort({ createdAt: -1 })
-            .limit(10);
+            .sort({ createdAt: -1 });
         
-        // Get user's payments
+        // Get user's payments with booking and car details
         const payments = await Payment.find({ user: req.user._id })
-            .populate('booking')
-            .sort({ createdAt: -1 })
-            .limit(10);
+            .populate({
+                path: 'booking',
+                populate: {
+                    path: 'car',
+                    select: 'name model brand'
+                }
+            })
+            .sort({ createdAt: -1 });
         
         // Calculate statistics
         const stats = {
