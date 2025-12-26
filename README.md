@@ -76,6 +76,46 @@ A production-ready, multi-module Car Rental Platform designed for seamless user 
 
 ## 🌐 Production Deployment Guide
 
+### Deployment Options
+
+Choose your preferred platform for backend deployment:
+
+| Platform | Guide | Best For |
+|----------|-------|----------|
+| 🎨 **Render** | [DEPLOYMENT_RENDER.md](./DEPLOYMENT_RENDER.md) | Free tier, side projects |
+| 🚂 **Railway** | [DEPLOYMENT.md](./DEPLOYMENT.md) | Production apps, no cold starts |
+
+Both use **Vercel** for frontend deployment.
+
+### Quick Deploy
+
+1. **Setup Script** (One-time setup):
+   ```bash
+   chmod +x setup-deploy.sh
+   ./setup-deploy.sh
+   ```
+
+2. **Deploy Backend**:
+   - **Option A - Render** (Free): Import on [render.com](https://render.com)
+   - **Option B - Railway** ($5/mo): Import on [railway.app](https://railway.app)
+
+3. **Deploy Frontend** to Vercel:
+   - Import on [Vercel.com](https://vercel.com)
+   - Set Root Directory: `apps/web`
+   - Deploy!
+
+### Configuration Files
+- [`render.yaml`](render.yaml) - Render deployment config
+- [`railway.json`](railway.json) - Railway deployment config
+- [`vercel.json`](vercel.json) - Frontend deployment config
+- [DEPLOYMENT_RENDER.md](DEPLOYMENT_RENDER.md) - Render deployment guide
+- [DEPLOYMENT.md](DEPLOYMENT.md) - Railway deployment guide
+- [DEPLOYMENT_CONFIG.md](DEPLOYMENT_CONFIG.md) - Configuration overview
+
+---
+
+## 🌐 Original Production Deployment Guide (Manual Setup)
+
 ### Prerequisites
 - Node.js 18+ installed
 - MongoDB Atlas account (or MongoDB server)
