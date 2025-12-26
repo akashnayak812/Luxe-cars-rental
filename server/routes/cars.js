@@ -26,13 +26,22 @@ router.get('/:id', async (req, res) => {
 
 // Create a car (Admin only)
 router.post('/', auth, async (req, res) => {
-    if (req.user.role !== 'admin') return res.status(403).json({ message: 'Access denied' });
+    console.log('POST /api/cars - Received request');
+    console.log('User:', req.user);
+    console.log('Request body:', req.body);
+    
+    if (req.user.role !== 'admin') {
+        console.log('Access denied: User is not admin');
+        return res.status(403).json({ message: 'Access denied. Admin only.' });
+    }
 
-    const car = new Car(req.body);
     try {
+        const car = new Car(req.body);
         const newCar = await car.save();
+        console.log('Car created successfully:', newCar._id);
         res.status(201).json(newCar);
     } catch (err) {
+        console.error('Error creating car:', err.message);
         res.status(400).json({ message: err.message });
     }
 });
